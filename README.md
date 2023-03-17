@@ -8,7 +8,7 @@ The GraphQL API is contained in the api folder of the project and all content is
 
 The API fetches all data from the [Rick & Morty REST API](https://rickandmortyapi.com/).
 
-You can access the Apollo playground interface at http://localhost:3000/api/graphql
+You can access the Apollo playground interface at http://localhost:3000/api/graphql once the project is started. This will allow you to play with the available schemas.
 
 ---
 
