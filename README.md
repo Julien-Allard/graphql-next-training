@@ -5,6 +5,7 @@
 This time, we go fullstack using the next framework.
 
 The GraphQL API is contained in the api folder of the project and all content is rendered through static content.
+Just run the project and the app will be self sufficient ! No need to access an external API.
 
 The API fetches all data from the [Rick & Morty REST API](https://rickandmortyapi.com/).
 
