@@ -1,0 +1,17 @@
+.navbar-main-container {
+   margin-bottom: 30px;
+   padding: 10px 0;
+
+   .links-list {
+      display: flex;
+      justify-content: space-evenly;
+
+      li {
+         a {
+            border: 1px solid black;
+            padding: 5px 10px;
+            text-decoration: none;
+         }
+      }
+   }
+}
