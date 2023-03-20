@@ -1,5 +1,6 @@
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 
+import './index.scss';
 import '../styles/globals.css';
 import '../components/Navbar/Navbar.scss';
 import '../pages/characters/characters.scss';
