@@ -1,6 +1,5 @@
 import Head from 'next/head';
-import Image from 'next/image';
-import mainBanner from '../assets/img/rickandmortybanner.png';
+import MainTitle from '../components/MainTitle/MainTitle';
 
 export default function Home() {
    return (
@@ -12,13 +11,7 @@ export default function Home() {
             <link rel="icon" href="/rickfavicon.png" />
          </Head>
          <main className="home-container">
-            {/* <Image
-               src={mainBanner}
-               alt="Website main banner featuring Rick and Morty"
-               priority
-               placeholder="blur"
-            /> */}
-            <h1 className="main-title">Rick and Morty GraphQL Training</h1>
+            <MainTitle content="Rick & Morty GraphQL training" />
          </main>
       </>
    );

@@ -11,6 +11,8 @@ The API fetches all data from the [Rick & Morty REST API](https://rickandmortyap
 
 You can access the Apollo playground interface at http://localhost:3000/api/graphql once the project is started. This will allow you to play with the available schemas.
 
+Design was largely inspired by the original API.
+
 ---
 
 | Scripts         | Description                    |

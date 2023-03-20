@@ -2,6 +2,8 @@ export type CharactersType = {
    id: string;
    name: string;
    image: string;
+   status: string;
+   species: string;
 };
 
 export type OneCharacterType = {
