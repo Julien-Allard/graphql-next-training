@@ -4,15 +4,23 @@ import Link from 'next/link';
 
 import { client } from '../../_app';
 import { CharactersDataType, OneCharacterType } from '../../../types/CharactersType';
+import { EpisodesInfoType } from '../../../types/EpisodesType';
 import MainTitle from '../../../components/MainTitle/MainTitle';
 
 interface Props {
    data: {
       character: OneCharacterType;
+      episodes: {
+         info: EpisodesInfoType;
+      };
    };
 }
 
 export default function CharacterById({ data }: Props) {
+   const totalEpisodes = data.episodes.info.count;
+   const episodesArray = Array.from({ length: totalEpisodes }, (_, elem) => elem + 1);
+   const featuredEpisodes = data.character.episode.map((feature) => feature.split('/').at(-1));
+
    return (
       <>
          <MainTitle content={data.character.name} />
@@ -33,8 +41,8 @@ export default function CharacterById({ data }: Props) {
                      </div>
                      <div>
                         <p>{data.character.name}</p>
-                        <p>{data.character.gender}</p>
                         <p>{data.character.species}</p>
+                        <p>{data.character.gender}</p>
                         <p>
                            {data.character.status}
                            <span className={data.character.status}></span>
@@ -45,14 +53,18 @@ export default function CharacterById({ data }: Props) {
                   </div>
                </div>
                <div className="featured-episodes">
-                  <h2>Featured Episodes</h2>
+                  <h2>Featured Episodes ({data.character.episode.length})</h2>
                   <ul>
-                     {data.character.episode.map((episode, index) => {
-                        const episodeNumber = episode.split('/').at(-1);
-
+                     {episodesArray.map((episode, index) => {
                         return (
-                           <Link href={`/episodes/by-id/${episodeNumber}`} key={index}>
-                              <li>Episode {episodeNumber}</li>
+                           <Link href={`/episodes/by-id/${episode}`} key={index}>
+                              <li
+                                 className={`${
+                                    featuredEpisodes.includes(episode.toString()) ? 'featured' : ''
+                                 }`}
+                              >
+                                 Episode {episode}
+                              </li>
                            </Link>
                         );
                      })}
@@ -93,6 +105,11 @@ export async function getStaticProps(context: Context) {
             image
             episode
          }
+         episodes(page: 1) {
+            info {
+               count
+            }
+         }         
       }
    `;
 

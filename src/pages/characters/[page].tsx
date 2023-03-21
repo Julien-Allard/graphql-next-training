@@ -23,17 +23,18 @@ export default function Characters({ data }: Props) {
          <div className="characters-page-container">
             <div className="character-cards-container">
                {charactersList.map((character: CharactersType) => (
-                  <div className="character-card" key={character.id}>
-                     <div className="img-container">
-                        <img src={character.image} alt="Character portrait" />
-                     </div>
-                     <div className="character-details">
-                        <Link
-                           href={{
-                              pathname: '/characters/by-id/[id]',
-                              query: { id: `${character.id}` },
-                           }}
-                        >
+                  <Link
+                     href={{
+                        pathname: '/characters/by-id/[id]',
+                        query: { id: `${character.id}` },
+                     }}
+                     key={character.id}
+                  >
+                     <div className="character-card">
+                        <div className="img-container">
+                           <img src={character.image} alt="Character portrait" />
+                        </div>
+                        <div className="character-details">
                            <p className="character-name">{character.name}</p>
                            <div className="character-status">
                               <p>Status:</p>
@@ -44,9 +45,9 @@ export default function Characters({ data }: Props) {
                               <p>Species:</p>
                               <p>{character.species}</p>
                            </div>
-                        </Link>
+                        </div>
                      </div>
-                  </div>
+                  </Link>
                ))}
             </div>
             <div className="buttons-container">

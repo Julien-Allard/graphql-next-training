@@ -13,6 +13,11 @@
       gap: 20px;
       padding-bottom: 30px;
 
+      a {
+         color: #fff;
+         text-decoration: none;
+      }
+
       .character-card {
          width: 375px;
          background-color: #3c3e44;
@@ -38,11 +43,6 @@
          .character-details {
             flex: 2;
             padding: 15px 15px 15px 10px;
-
-            a {
-               color: #fff;
-               text-decoration: none;
-            }
 
             .character-name {
                font-weight: 700;
