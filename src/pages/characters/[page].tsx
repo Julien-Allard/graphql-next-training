@@ -38,18 +38,10 @@ export default function Characters({ data }: Props) {
                            <div className="character-status">
                               <p>Status:</p>
                               <p>{character.status}</p>
-                              <div
-                                 className={`status-icon ${
-                                    character.status === 'Alive'
-                                       ? 'alive'
-                                       : character.status === 'Dead'
-                                       ? 'dead'
-                                       : 'unknown'
-                                 }`}
-                              ></div>
+                              <div className={`status-icon ${character.status}`}></div>
                            </div>
                            <div className="character-species">
-                              <p>Species :</p>
+                              <p>Species:</p>
                               <p>{character.species}</p>
                            </div>
                         </Link>

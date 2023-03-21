@@ -1,0 +1,95 @@
+.unique-character-container {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   padding: 30px;
+   font-family: 'Montserrat', sans-serif;
+
+   .character-data {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+      .data-details {
+         display: flex;
+         border-radius: 10px;
+         background-color: #3c3e44;
+         overflow: hidden;
+
+         .portrait-container {
+            object-fit: cover;
+            height: 200px;
+
+            img {
+               height: 100%;
+            }
+         }
+
+         .all-details {
+            display: flex;
+            padding: 10px 20px 10px 15px;
+            gap: 20px;
+            color: white;
+
+            div {
+               display: flex;
+               flex-direction: column;
+               justify-content: space-evenly;
+
+               p {
+                  span {
+                     display: inline-block;
+                     width: 0.5rem;
+                     height: 0.5rem;
+                     border-radius: 50%;
+                     margin-left: 10px;
+
+                     &.Alive {
+                        background-color: green;
+                     }
+
+                     &.Dead {
+                        background-color: red;
+                     }
+
+                     &.unknown {
+                        background-color: lightgray;
+                     }
+                  }
+               }
+            }
+
+            div:nth-child(1) {
+               font-weight: 700;
+            }
+         }
+      }
+
+      .featured-episodes {
+         display: flex;
+         flex-direction: column;
+         border-radius: 10px;
+         background-color: #3c3e44;
+         overflow: hidden;
+         padding: 20px 15px;
+
+         h2 {
+            text-align: center;
+            color: white;
+            font-weight: 700;
+            font-size: 20px;
+         }
+
+         ul {
+            li {
+               display: block;
+               background-color: #fff;
+               border-radius: 5px;
+               padding: 5px 10px;
+               width: 85px;
+            }
+         }
+      }
+   }
+}

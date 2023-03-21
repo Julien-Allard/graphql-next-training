@@ -1,8 +1,10 @@
 import { useRouter } from 'next/router';
 import { ApolloQueryResult, gql } from '@apollo/client';
+import Link from 'next/link';
 
 import { client } from '../../_app';
 import { CharactersDataType, OneCharacterType } from '../../../types/CharactersType';
+import MainTitle from '../../../components/MainTitle/MainTitle';
 
 interface Props {
    data: {
@@ -11,8 +13,55 @@ interface Props {
 }
 
 export default function CharacterById({ data }: Props) {
-   const router = useRouter();
-   return <div>{data.character.name}</div>;
+   return (
+      <>
+         <MainTitle content={data.character.name} />
+         <div className="unique-character-container">
+            <div className="character-data">
+               <div className="data-details">
+                  <div className="portrait-container">
+                     <img src={data.character.image} alt={`${data.character.name} portrait`} />
+                  </div>
+                  <div className="all-details">
+                     <div>
+                        <p>Name:</p>
+                        <p>Species:</p>
+                        <p>Gender:</p>
+                        <p>Status:</p>
+                        <p>Origin:</p>
+                        <p>Current location:</p>
+                     </div>
+                     <div>
+                        <p>{data.character.name}</p>
+                        <p>{data.character.gender}</p>
+                        <p>{data.character.species}</p>
+                        <p>
+                           {data.character.status}
+                           <span className={data.character.status}></span>
+                        </p>
+                        <p>{data.character.origin.name}</p>
+                        <p>{data.character.location.name}</p>
+                     </div>
+                  </div>
+               </div>
+               <div className="featured-episodes">
+                  <h2>Featured Episodes</h2>
+                  <ul>
+                     {data.character.episode.map((episode, index) => {
+                        const episodeNumber = episode.split('/').at(-1);
+
+                        return (
+                           <Link href={`/episodes/by-id/${episodeNumber}`} key={index}>
+                              <li>Episode {episodeNumber}</li>
+                           </Link>
+                        );
+                     })}
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </>
+   );
 }
 
 interface Context {
@@ -26,25 +75,25 @@ export async function getStaticProps(context: Context) {
    const characterId = context.params.id;
 
    const GET_CHARACTER_BY_ID = gql`
-    query {
-      character(id: ${characterId}) {
-        id
-        name
-        status
-        created
-        species
-        gender
-        origin {
-          name
-        }
-        location {
-          name
-          dimension
-        }
-        image
-        episode
+      query {
+         character(id: ${characterId}) {
+            id
+            name
+            status
+            created
+            species
+            gender
+            origin {
+               name
+            }
+            location {
+               name
+               dimension
+            }
+            image
+            episode
+         }
       }
-    }
    `;
 
    const { loading, error, data }: ApolloQueryResult<OneCharacterType> = await client.query({

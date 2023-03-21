@@ -21,7 +21,7 @@ export type OneCharacterType = {
       dimension: string;
    };
    image: string;
-   episode: string;
+   episode: string[];
 };
 
 export type CharactersInfoType = {

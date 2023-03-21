@@ -4,6 +4,7 @@ import './index.scss';
 import '../styles/globals.css';
 import '../components/Navbar/Navbar.scss';
 import '../pages/characters/characters.scss';
+import '../pages/characters/by-id/characterbyid.scss';
 import '../components/MainTitle/MainTitle.scss';
 
 import type { AppProps } from 'next/app';
