@@ -3,6 +3,7 @@ import { ApolloQueryResult, gql } from '@apollo/client';
 
 import { client } from '../../_app';
 import { EpisodesInfoType, EpisodesType } from '../../../types/EpisodesType';
+import MainTitle from '../../../components/MainTitle/MainTitle';
 
 interface Props {
    data: {
@@ -11,11 +12,25 @@ interface Props {
 }
 
 export default function EpisodeById({ data }: Props) {
-   const router = useRouter();
-   const episodeid = router.query.id;
-   const episodeData = data.episode;
-
-   return <div>{episodeData.name}</div>;
+   return (
+      <>
+         <MainTitle content={`${data.episode.episode} - ${data.episode.name}`} />
+         <div className="unique-episode-container">
+            <ul className="episode-card">
+               <li>
+                  <p>Episode :</p>
+                  <p>Name :</p>
+                  <p>Air date :</p>
+               </li>
+               <li>
+                  <p>{data.episode.episode}</p>
+                  <p>{data.episode.name}</p>
+                  <p>{data.episode.air_date}</p>
+               </li>
+            </ul>
+         </div>
+      </>
+   );
 }
 
 interface Context {

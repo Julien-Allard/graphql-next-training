@@ -3,9 +3,11 @@ import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import './index.scss';
 import '../styles/globals.css';
 import '../components/Navbar/Navbar.scss';
+import '../components/MainTitle/MainTitle.scss';
 import '../pages/characters/characters.scss';
 import '../pages/characters/by-id/characterbyid.scss';
-import '../components/MainTitle/MainTitle.scss';
+import '../pages/episodes/episodes.scss';
+import '../pages/episodes/by-id/episodebyid.scss';
 
 import type { AppProps } from 'next/app';
 

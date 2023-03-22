@@ -1,0 +1,53 @@
+.episodes-page-container {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+   padding: 30px 0;
+   font-family: 'Montserrat', sans-serif;
+
+   .episodes-list {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 860px;
+      gap: 10px;
+      padding-bottom: 30px;
+
+      a {
+         text-decoration: none;
+
+         li {
+            display: flex;
+            align-items: center;
+            box-sizing: border-box;
+            border-radius: 5px;
+            width: 425px;
+            color: white;
+            background-color: #3c3e44;
+            padding: 10px 20px;
+            gap: 5px;
+
+            &:hover {
+               box-shadow: 0px 0px 10px 0px #fff;
+            }
+         }
+      }
+   }
+
+   .buttons-container {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+
+      a {
+         display: inline-block;
+         text-decoration: none;
+         background-color: #ffffff;
+         border-radius: 10px;
+         color: black;
+         padding: 10px 20px;
+         text-transform: uppercase;
+         transition: 0.5s;
+      }
+   }
+}

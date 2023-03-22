@@ -4,6 +4,7 @@ import { ApolloQueryResult, gql } from '@apollo/client';
 
 import { client } from '../_app';
 import { EpisodesInfoType, EpisodesType, EpisodesDataType } from '../../types/EpisodesType';
+import MainTitle from '../../components/MainTitle/MainTitle';
 
 interface Props {
    data: {
@@ -18,31 +19,46 @@ export default function Episodes(props: Props) {
    const maxPage = props.data.episodes.info.pages;
 
    return (
-      <div>
-         {episodesByPage.map((episode: EpisodesType) => (
-            <Link
-               key={episode.id}
-               href={{
-                  pathname: '/episodes/by-id/[id]',
-                  query: { id: `${episode.id}` },
-               }}
-            >
-               <p>{episode.name}</p>
-            </Link>
-         ))}
-         <Link
-            href={`${Number(currentPage) > 1 && Number(currentPage) - 1}`}
-            style={{ pointerEvents: `${Number(currentPage) === 1 ? 'none' : 'auto'}` }}
-         >
-            <button type="button">PREV PAGE</button>
-         </Link>
-         <Link
-            href={`${Number(currentPage) + 1}`}
-            style={{ pointerEvents: `${Number(currentPage) === maxPage ? 'none' : 'auto'}` }}
-         >
-            <button type="button">NEXT PAGE</button>
-         </Link>
-      </div>
+      <>
+         <MainTitle content="Episodes" />
+         <div className="episodes-page-container">
+            <ul className="episodes-list">
+               {episodesByPage.map((episode: EpisodesType) => (
+                  <Link
+                     key={episode.id}
+                     href={{
+                        pathname: '/episodes/by-id/[id]',
+                        query: { id: `${episode.id}` },
+                     }}
+                  >
+                     <li>
+                        <p>{episode.episode}</p> - <p>{episode.name}</p>
+                     </li>
+                  </Link>
+               ))}
+            </ul>
+            <div className="buttons-container">
+               <Link
+                  href={`${Number(currentPage) > 1 && Number(currentPage) - 1}`}
+                  style={{
+                     pointerEvents: `${Number(currentPage) === 1 ? 'none' : 'auto'}`,
+                     opacity: Number(currentPage) === 1 ? 0.5 : 1,
+                  }}
+               >
+                  <div>PREV PAGE</div>
+               </Link>
+               <Link
+                  href={`${Number(currentPage) + 1}`}
+                  style={{
+                     pointerEvents: `${Number(currentPage) === maxPage ? 'none' : 'auto'}`,
+                     opacity: Number(currentPage) === maxPage ? 0.5 : 1,
+                  }}
+               >
+                  <div>NEXT PAGE</div>
+               </Link>
+            </div>
+         </div>
+      </>
    );
 }
 
