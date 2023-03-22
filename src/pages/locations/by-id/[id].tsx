@@ -3,6 +3,7 @@ import { ApolloQueryResult, gql } from '@apollo/client';
 
 import { client } from '../../_app';
 import { LocationsInfoType, LocationsType } from '../../../types/LocationsType';
+import MainTitle from '../../../components/MainTitle/MainTitle';
 
 interface Props {
    data: {
@@ -13,9 +14,23 @@ interface Props {
 export default function LocationById({ data }: Props) {
    const locationData = data.location;
    return (
-      <div>
-         <p>{locationData.name}</p>
-      </div>
+      <>
+         <MainTitle content={locationData.name} />
+         <div className="unique-location-container">
+            <ul className="location-card">
+               <li>
+                  <p>Name :</p>
+                  <p>Type :</p>
+                  <p>Dimension :</p>
+               </li>
+               <li>
+                  <p>{locationData.name}</p>
+                  <p>{locationData.type}</p>
+                  <p>{locationData.dimension}</p>
+               </li>
+            </ul>
+         </div>
+      </>
    );
 }
 

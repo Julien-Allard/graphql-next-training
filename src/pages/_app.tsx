@@ -8,6 +8,8 @@ import '../pages/characters/characters.scss';
 import '../pages/characters/by-id/characterbyid.scss';
 import '../pages/episodes/episodes.scss';
 import '../pages/episodes/by-id/episodebyid.scss';
+import '../pages/locations/locations.scss';
+import '../pages/locations/by-id/locationbyid.scss';
 
 import type { AppProps } from 'next/app';
 

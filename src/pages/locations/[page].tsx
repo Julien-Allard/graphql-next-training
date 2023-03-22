@@ -4,6 +4,7 @@ import { ApolloQueryResult, gql } from '@apollo/client';
 
 import { client } from '../_app';
 import { LocationsDataType, LocationsInfoType, LocationsType } from '../../types/LocationsType';
+import MainTitle from '../../components/MainTitle/MainTitle';
 
 interface Props {
    data: LocationsDataType;
@@ -16,31 +17,40 @@ export default function Episodes({ data }: Props) {
    const maxPage = data.locations.info.pages;
 
    return (
-      <div>
-         {locationData.map((location: LocationsType) => (
-            <Link
-               href={{
-                  pathname: '/locations/by-id/[id]',
-                  query: { id: location.id },
-               }}
-               key={location.id}
-            >
-               <p>{location.name}</p>
-            </Link>
-         ))}
-         <Link
-            href={`${Number(currentPage) > 1 && Number(currentPage) - 1}`}
-            style={{ pointerEvents: `${Number(currentPage) === 1 ? 'none' : 'auto'}` }}
-         >
-            <button type="button">PREV PAGE</button>
-         </Link>
-         <Link
-            href={`${Number(currentPage) + 1}`}
-            style={{ pointerEvents: `${Number(currentPage) === maxPage ? 'none' : 'auto'}` }}
-         >
-            <button type="button">NEXT PAGE</button>
-         </Link>
-      </div>
+      <>
+         <MainTitle content="Locations" />
+         <div className="locations-page-container">
+            <ul className="locations-list">
+               {locationData.map((location: LocationsType) => (
+                  <Link
+                     href={{
+                        pathname: '/locations/by-id/[id]',
+                        query: { id: location.id },
+                     }}
+                     key={location.id}
+                  >
+                     <li>
+                        {location.name} - ({location.dimension})
+                     </li>
+                  </Link>
+               ))}
+            </ul>
+            <div className="buttons-container">
+               <Link
+                  href={`${Number(currentPage) > 1 && Number(currentPage) - 1}`}
+                  style={{ pointerEvents: `${Number(currentPage) === 1 ? 'none' : 'auto'}` }}
+               >
+                  <div>PREV PAGE</div>
+               </Link>
+               <Link
+                  href={`${Number(currentPage) + 1}`}
+                  style={{ pointerEvents: `${Number(currentPage) === maxPage ? 'none' : 'auto'}` }}
+               >
+                  <div>NEXT PAGE</div>
+               </Link>
+            </div>
+         </div>
+      </>
    );
 }
 
