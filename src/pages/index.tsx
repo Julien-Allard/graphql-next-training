@@ -10,8 +10,14 @@ export default function Home() {
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <link rel="icon" href="/rickfavicon.png" />
          </Head>
+         <MainTitle content="Rick & Morty GraphQL training" />
          <main className="home-container">
-            <MainTitle content="Rick & Morty GraphQL training" />
+            <div className="main-logo-container">
+               <img
+                  src="https://rickandmortyapi.com/api/character/avatar/19.jpeg"
+                  alt="Rick & Morty logo"
+               />
+            </div>
          </main>
       </>
    );
