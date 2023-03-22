@@ -23,12 +23,12 @@ export default function CharacterById({ data }: Props) {
 
    return (
       <>
-         <MainTitle content={data?.character?.name} />
+         <MainTitle content={data.character.name} />
          <div className="unique-character-container">
             <div className="character-data">
                <div className="data-details">
                   <div className="portrait-container">
-                     <img src={data?.character?.image} alt={`${data?.character?.name} portrait`} />
+                     <img src={data.character.image} alt={`${data.character.name} portrait`} />
                   </div>
                   <div className="all-details">
                      <div>
@@ -40,27 +40,27 @@ export default function CharacterById({ data }: Props) {
                         <p>Current location:</p>
                      </div>
                      <div>
-                        <p>{data?.character?.name}</p>
-                        <p>{data?.character?.species}</p>
-                        <p>{data?.character?.gender}</p>
+                        <p>{data.character.name}</p>
+                        <p>{data.character.species}</p>
+                        <p>{data.character.gender}</p>
                         <p>
-                           {data?.character?.status}
-                           <span className={data?.character?.status}></span>
+                           {data.character.status}
+                           <span className={data.character.status}></span>
                         </p>
-                        <p>{data?.character?.origin?.name}</p>
-                        <p>{data?.character?.location?.name}</p>
+                        <p>{data.character.origin.name}</p>
+                        <p>{data.character.location.name}</p>
                      </div>
                   </div>
                </div>
                <div className="featured-episodes">
-                  <h2>Featured Episodes ({data?.character?.episode?.length})</h2>
+                  <h2>Featured Episodes ({data.character.episode.length})</h2>
                   <ul>
-                     {episodesArray?.map((episode, index) => {
+                     {episodesArray.map((episode, index) => {
                         return (
                            <Link href={`/episodes/by-id/${episode}`} key={index}>
                               <li
                                  className={`${
-                                    featuredEpisodes?.includes(episode.toString()) ? 'featured' : ''
+                                    featuredEpisodes.includes(episode.toString()) ? 'featured' : ''
                                  }`}
                               >
                                  Episode {episode}
@@ -84,7 +84,7 @@ interface Context {
 }
 
 export async function getStaticProps(context: Context) {
-   const characterId = context?.params?.id;
+   const characterId = context.params.id;
 
    const GET_CHARACTER_BY_ID = gql`
       query {
