@@ -14,7 +14,7 @@ import '../pages/locations/by-id/locationbyid.scss';
 import type { AppProps } from 'next/app';
 
 export const client = new ApolloClient({
-   uri: 'https://graphql-server-training.herokuapp.com/',
+   uri: 'https://graphql-server-training.herokuapp.com/graphql',
    cache: new InMemoryCache(),
 });
 
