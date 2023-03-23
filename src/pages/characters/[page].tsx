@@ -32,7 +32,14 @@ export default function Characters({ data }: Props) {
                   >
                      <div className="character-card">
                         <div className="img-container">
-                           <img src={character.image} alt="Character portrait" />
+                           <Image
+                              src={character.image}
+                              alt="Character portrait"
+                              width={300}
+                              height={300}
+                              placeholder="blur"
+                              blurDataURL={character.image}
+                           />
                         </div>
                         <div className="character-details">
                            <p className="character-name">{character.name}</p>

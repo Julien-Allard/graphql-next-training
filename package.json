@@ -2,7 +2,6 @@
    "name": "rick-graphql-next",
    "version": "0.1.0",
    "private": true,
-   "type": "module",
    "scripts": {
       "dev": "next dev",
       "build": "next build",
@@ -21,7 +20,8 @@
       "next": "13.2.4",
       "react": "18.2.0",
       "react-dom": "18.2.0",
-      "sass": "^1.59.3"
+      "sass": "^1.59.3",
+      "sharp": "^0.31.3"
    },
    "devDependencies": {
       "@types/node": "^18.15.3",
