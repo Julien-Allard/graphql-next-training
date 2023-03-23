@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router';
 import { ApolloQueryResult, gql } from '@apollo/client';
 
 import { client } from '../../_app';
