@@ -15,14 +15,14 @@
 
       a {
          text-decoration: none;
-         width: 49%;
+         flex: 49%;
+         height: auto;
 
          li {
             display: flex;
             align-items: center;
             box-sizing: border-box;
             border-radius: 5px;
-
             color: white;
             background-color: #3c3e44;
             padding: 10px 20px;

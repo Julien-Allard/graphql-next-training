@@ -29,22 +29,26 @@ export default function Episodes({ data }: Props) {
                      }}
                      key={location.id}
                   >
-                     <li>
-                        {location.name} - ({location.dimension})
-                     </li>
+                     <li>{location.name}</li>
                   </Link>
                ))}
             </ul>
             <div className="buttons-container">
                <Link
                   href={`${Number(currentPage) > 1 && Number(currentPage) - 1}`}
-                  style={{ pointerEvents: `${Number(currentPage) === 1 ? 'none' : 'auto'}` }}
+                  style={{
+                     pointerEvents: `${Number(currentPage) === 1 ? 'none' : 'auto'}`,
+                     opacity: Number(currentPage) === 1 ? 0.5 : 1,
+                  }}
                >
                   <div>PREV PAGE</div>
                </Link>
                <Link
                   href={`${Number(currentPage) + 1}`}
-                  style={{ pointerEvents: `${Number(currentPage) === maxPage ? 'none' : 'auto'}` }}
+                  style={{
+                     pointerEvents: `${Number(currentPage) === maxPage ? 'none' : 'auto'}`,
+                     opacity: Number(currentPage) === maxPage ? 0.5 : 1,
+                  }}
                >
                   <div>NEXT PAGE</div>
                </Link>
